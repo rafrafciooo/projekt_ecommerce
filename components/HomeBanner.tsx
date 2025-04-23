@@ -1,7 +1,7 @@
 import React from "react";
 import { Title } from "./ui/text";
 import Link from "next/link";
-import { Button } from "./ui/button";
+
 import Image from "next/image";
 
 const HomeBanner = () => {
@@ -9,7 +9,7 @@ const HomeBanner = () => {
 		<div className='relative py-16 md:py-0 bg-shop-light-pink rounded-lg px-10 lg:px-24 flex items-center justify-between'>
 			<div className='space-y-5'>
 				<Title className='mb-3'>
-					Demo: Next15, Sanity, Stripe, TailwindCSS, TypeScript
+			Miejsce na twoje hasło reklamowe i promocje
 				</Title>
 				
 					<Link href='/sklep' className="ctaBtn">Zobacz sklep</Link>

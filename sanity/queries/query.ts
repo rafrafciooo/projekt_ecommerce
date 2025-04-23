@@ -15,4 +15,20 @@ const DEAL_PRODUCTS =
     
     `);
 
-export { BRANDS_QUERY, LATEST_BLOG_QUERY, DEAL_PRODUCTS };
+const PRODUCT_BY_SLUG =
+	defineQuery(`*[_type == "product" && slug.current == $slug] | order(name asc) [0]
+  `);
+
+const BRAND_QUERY = defineQuery(`
+	*[_type == "product" && slug.current == $slug][0]{
+	  "brand": brand->title
+	}
+  `);
+
+export {
+	BRANDS_QUERY,
+	LATEST_BLOG_QUERY,
+	DEAL_PRODUCTS,
+	PRODUCT_BY_SLUG,
+	BRAND_QUERY,
+};

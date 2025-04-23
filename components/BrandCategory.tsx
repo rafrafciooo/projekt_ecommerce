@@ -39,7 +39,7 @@ const BrandCategory = async () => {
 					href='/sklep'
 					className='border border-shop-light-green/30 py-2 px-6 rounded-full hover:bg-shop-light-green hover:text-white hoverEffect '
 				>
-					DO ZMIANY RWD!!!!!!!
+					Zobacz wszystko
 				</Link>
 			</div>
 			<div className='flex justify-center '>

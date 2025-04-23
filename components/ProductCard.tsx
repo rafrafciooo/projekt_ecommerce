@@ -5,27 +5,29 @@ import { BadgePercent, Flame, Star } from "lucide-react";
 
 import Image from "next/image";
 import Link from "next/link";
-import AddToFavorite from "./AddToFavorite";
+
 import { Title } from "./ui/text";
 import PricingView from "./PricingView";
 import AddToCart from "./AddToCart";
+import AddToCartButton from "./AddToCartButton";
 
 const ProductCard = ({ product }: { product: Product }) => {
-	
 	return (
 		<div className='text-sm border-[1px] rounded-xl border-shop-dark-green/20 bg-white group overflow-hidden'>
 			<div className='relative group overflow-hidden bg-shop-light-bg'>
 				{product?.images?.length && (
-					<Image
-						src={urlFor(product?.images[0]).url()}
-						alt={product?.name || "zdjęcie produktu"}
-						loading='lazy'
-						width={700}
-						height={700}
-						className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop-light-bg hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
-					/>
+					<Link href={`/produkty/${product?.slug?.current}`}>
+						<Image
+							src={urlFor(product?.images[0]).url()}
+							alt={product?.name || "zdjęcie produktu"}
+							loading='lazy'
+							width={700}
+							height={700}
+							className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop-light-bg hoverEffect ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+						/>
+					</Link>
 				)}
-				<AddToFavorite product={product} />
+				<AddToCartButton product={product} />
 				{product.status === "sale" && (
 					<p
 						className='absolute top-2 left-2 z-10 text-md border p-1 rounded-full
@@ -94,9 +96,8 @@ const ProductCard = ({ product }: { product: Product }) => {
 					discount={product?.discount ?? 0}
 					className='text-sm'
 				/>
-				<AddToCart product={product} className="ctaBtn"/>
+				<AddToCart product={product} className='ctaBtn' />
 			</div>
-			
 		</div>
 	);
 };

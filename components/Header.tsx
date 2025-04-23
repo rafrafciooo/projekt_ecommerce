@@ -4,13 +4,14 @@ import Logo from "./Logo";
 import Navbar from "./Navbar";
 import SearchBar from "./SearchBar";
 import CartIcon from "./CartIcon";
-import FavoriteIcon from "./FavoriteIcon";
+
 import SignIn from "./SignIn";
 import MobileNav from "./MobileNav";
 import { currentUser } from "@clerk/nextjs/server";
 
 import { ClerkLoaded } from "@clerk/nextjs";
 import { SignedIn, UserButton } from "@clerk/nextjs";
+import FavoriteButton from "./FavoriteButton";
 
 const Header = async () => {
 	const user = await currentUser();
@@ -26,7 +27,7 @@ const Header = async () => {
 				<div className='w-auto md:w-1/3 flex items-center gap-4 justify-end-safe'>
 					<SearchBar />
 					<CartIcon />
-					<FavoriteIcon />
+					<FavoriteButton />
 					<div className=''>
 						<ClerkLoaded>
 							<SignedIn>

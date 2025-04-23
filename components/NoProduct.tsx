@@ -48,15 +48,6 @@ const NoProduct = ({
 				<Loader2 className='w-5 h-5 animate-spin' />
 				<span>Wkrótce uzupełnimy zapasy</span>
 			</motion.div>
-
-			<motion.p
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				transition={{ delay: 0.4, duration: 0.5 }}
-				className='text-sm text-gray-500'
-			>
-				Spróbuj ponownie później lub sprawdź inne kategorie produktów.
-			</motion.p>
 		</div>
 	);
 };

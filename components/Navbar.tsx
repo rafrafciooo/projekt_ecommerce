@@ -10,7 +10,7 @@ const Navbar = ({ className }: { className?: string }) => {
 	return (
 		<nav
 			className={cn(
-				"hidden md:inline-flex gap-4 w-1/3 items-center text-sm capitalize text-lightColor",
+				"hidden md:inline-flex gap-4 w-1/3 items-center justify-center text-sm capitalize text-lightColor",
 				className
 			)}
 		>

@@ -17,14 +17,14 @@ const Logo = ({
 					className
 				)}
 			>
-				Cookie
+				Twoje
 				<span
 					className={cn(
 						"group-hover:text-shop-dark-green text-shop-light-green hoverEffect",
 						spanClass
 					)}
 				>
-					Shop
+					Logo
 				</span>
 			</h2>
 		</Link>

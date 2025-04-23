@@ -21,11 +21,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<ClerkProvider>
-	
-					<Header />
-					<main className='flex-1 '>{children}</main>
-					<Footer />
-	
+			<Header />
+			<main className='flex-1 '>{children}</main>
+			<Footer />
 		</ClerkProvider>
 	);
 }
