@@ -367,6 +367,7 @@ export type Category = {
 	description?: string;
 	range?: number;
 	featured?: boolean;
+	productCount?: number;
 	image?: {
 		asset?: {
 			_ref: string;
@@ -376,6 +377,7 @@ export type Category = {
 		};
 		media?: unknown;
 		hotspot?: SanityImageHotspot;
+
 		crop?: SanityImageCrop;
 		_type: "image";
 	};

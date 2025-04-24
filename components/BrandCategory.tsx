@@ -47,20 +47,21 @@ const BrandCategory = async () => {
 					{brands?.map(brand => (
 						<Link
 							key={brand?._id}
-							href={`/marka/${brand?.slug?.current}`}
+							href={{
+								pathname: "/sklep",
+								query: { brand: brand?.slug?.current },
+							}}
 							className='bg-white w-34 h-24 flex items-center justify-center rounded-md overflow-hidden hover:shadow-lg shadow-shop-light-green/10 hoverEffect'
 						>
-							<div className=''>
-								{brand?.image && (
-									<Image
-										src={urlFor(brand?.image).url()}
-										alt='categoryImage'
-										width={500}
-										height={500}
-										className='w-32 h-20 object-contain'
-									/>
-								)}
-							</div>
+							{brand?.image && (
+								<Image
+									src={urlFor(brand?.image).url()}
+									alt='categoryImage'
+									width={500}
+									height={500}
+									className='w-32 h-20 object-contain'
+								/>
+							)}
 						</Link>
 					))}
 				</div>

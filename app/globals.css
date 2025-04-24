@@ -147,3 +147,12 @@
 		@apply bg-shop-btn-dark-green/90 px-5 py-2 rounded-full hover:bg-shop-dark-green mt-4 text-white;
 	}
 }
+
+.scrollbarThin {
+	scrollbar-width: thin; /* Firefox */
+	scrollbar-color: #e6e4e4 #fff;
+}
+
+.scrollbarThin::-webkit-scrollbar {
+	width: 6px;
+}
