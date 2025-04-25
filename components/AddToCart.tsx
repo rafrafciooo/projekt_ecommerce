@@ -7,12 +7,13 @@ import { ShoppingBag } from "lucide-react";
 import useStore from "@/store";
 import toast from "react-hot-toast";
 import PriceFormat from "./PriceFormat";
+import QuantityButtons from "./QuantityButtons";
 
 const AddToCart = ({
 	product,
 	className,
 }: {
-	product: Product;
+	product: Product,
 	className?: string;
 }) => {
 	const { addItem, getItemCount } = useStore();
@@ -40,15 +41,16 @@ const AddToCart = ({
 		<>
 			{itemCount ? (
 				<div className='text-sm w-full '>
-					<div>
-						<span className='text-xs font-semibold'>quantity</span>
-						buttons
+					<div className='flex items-center justify-between'>
+						<span className='text-xs font-semibold'>Ilość:</span>
+						<QuantityButtons product={product} />
 					</div>
-					<div className='flex items-center justify-between  border-t pt-1'>
-						<span className='text-xs font-semibold'>subtotal</span>
+					<div className='flex items-center justify-between border-t pt-1'>
+						<span className='text-xs font-semibold'>Łączna cena:</span>
 						<PriceFormat
-						className="text-sm"
-							amount={product?.price ? product?.price * itemCount : 0}
+							className='text-sm'
+							amount={product?.price ? product.price * itemCount : 0}
+							discount={product?.discount}
 						/>
 					</div>
 				</div>

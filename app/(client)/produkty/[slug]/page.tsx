@@ -87,7 +87,9 @@ const SingleProductPage = async ({ params }: { params: { slug: string } }) => {
 						<p
 							className={`text-sm px-6 py-1 inline-block text-center ${productDetails?.stock === 0 ? "bg-red-100 text-red-600" : "bg-green-100 "}`}
 						>
-							{(productDetails?.stock as number) > 0 ? "W magazynie" : "Brak w magazynie"}
+							{(productDetails?.stock as number) > 0
+								? "W magazynie"
+								: "Brak w magazynie"}
 						</p>
 						<div className='flex items-center  gap-3 '>
 							<AddToCart

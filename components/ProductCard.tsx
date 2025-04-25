@@ -9,7 +9,8 @@ import Link from "next/link";
 import { Title } from "./ui/text";
 import PricingView from "./PricingView";
 import AddToCart from "./AddToCart";
-import AddToCartButton from "./AddToCartButton";
+
+import ProductSideMenu from "./ProductSideMenu";
 
 const ProductCard = ({ product }: { product: Product }) => {
 	return (
@@ -27,7 +28,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 						/>
 					</Link>
 				)}
-				<AddToCartButton product={product} />
+				<ProductSideMenu product={product} />
 				{product.status === "sale" && (
 					<p
 						className='absolute top-2 left-2 z-10 text-md border p-1 rounded-full

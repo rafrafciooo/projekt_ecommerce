@@ -7,9 +7,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SocialMedia from "./SocialMedia";
 import { useOutsideClick } from "@/hooks";
-import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
-import SignIn from "./SignIn";
-import { currentUser } from "@clerk/nextjs/server";
+// import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
+// import SignIn from "./SignIn";
+// import { currentUser } from "@clerk/nextjs/server";
 interface SideMenuProps {
 	isOpen: boolean;
 	onClose: () => void;
