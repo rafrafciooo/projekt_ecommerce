@@ -110,7 +110,7 @@ export const orderType = defineType({
 		}),
 		defineField({
 			name: "amountDiscount",
-			title: "Zniżka kwotowa",
+			title: "Zniżka",
 			type: "number",
 			validation: Rule => Rule.required(),
 		}),

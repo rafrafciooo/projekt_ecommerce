@@ -18,8 +18,6 @@ const PriceFormat = ({
 		maximumFractionDigits: 2,
 	});
 
-	
-
 	return (
 		<span
 			className={cn("text-lg font-bold flex gap-2 items-center", className)}

@@ -65,18 +65,19 @@ const useStore = create<StoreState>()(
 				set(state => ({
 					items: state.items.filter(({ product }) => product._id !== productId),
 				})),
-			resetCart: () => ({ items: [] }),
-			getTotalPrice: () => {
+			resetCart: () => set({ items: [] }),
+			getSubTotalPrice: () => {
 				return get().items.reduce(
 					(total, item) => total + (item.product.price ?? 0) * item.quantity,
 					0
 				);
 			},
-			getSubTotalPrice: () => {
+
+			getTotalPrice: () => {
 				return get().items.reduce((total, item) => {
 					const price = item.product.price ?? 0;
 					const discount = ((item.product.discount ?? 0) * price) / 100;
-					const discountedPrice = price + discount;
+					const discountedPrice = price - discount; // ✅ poprawnie
 					return total + discountedPrice * item.quantity;
 				}, 0);
 			},

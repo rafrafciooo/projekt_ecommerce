@@ -25,6 +25,8 @@ const BRAND_QUERY = defineQuery(`
 	}
   `);
 
+  
+
 export {
 	BRANDS_QUERY,
 	LATEST_BLOG_QUERY,

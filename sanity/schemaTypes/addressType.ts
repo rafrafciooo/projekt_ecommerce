@@ -43,10 +43,10 @@ export const addressType = defineType({
 			name: "zip",
 			title: "Kod pocztowy",
 			type: "string",
-			description: "Format: 12345 lub 12345-6789",
+			description: "Format: 12-345",
 			validation: Rule =>
 				Rule.required()
-					.regex(/^\d{5}(-\d{4})?$/, {
+					.regex(/^\d{2}-\d{3}$/, {
 						name: "zipCode",
 						invert: false,
 					})
@@ -54,8 +54,8 @@ export const addressType = defineType({
 						if (!zip) {
 							return "Kod pocztowy jest wymagany";
 						}
-						if (!zip.match(/^\d{5}(-\d{4})?$/)) {
-							return "Wprowadź poprawny kod pocztowy (np. 12345 lub 12345-6789)";
+						if (!zip.match(/^\d{2}-\d{3}$/)) {
+							return "Wprowadź poprawny kod pocztowy (np. 12-345)";
 						}
 						return true;
 					}),
