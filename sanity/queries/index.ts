@@ -6,6 +6,8 @@ import {
 	LATEST_BLOG_QUERY,
 	PRODUCT_BY_SLUG,
 	BRAND_QUERY,
+	MY_ORDERS_QUERY,
+	GET_ALL_BLOGS,
 } from "./query";
 
 const getCategories = async (quantity?: number) => {
@@ -36,6 +38,19 @@ const getAllBrands = async (): Promise<Brand[]> => {
 	try {
 		const { data } = await sanityFetch({
 			query: BRANDS_QUERY,
+		});
+		return data ?? [];
+	} catch (error) {
+		console.log("error", error);
+		return [];
+	}
+};
+
+const getAllBlogs = async (quantity: number) => {
+	try {
+		const { data } = await sanityFetch({
+			query: GET_ALL_BLOGS,
+			params: { quantity },
 		});
 		return data ?? [];
 	} catch (error) {
@@ -92,6 +107,20 @@ const getBrands = async (slug: string) => {
 		return [];
 	}
 };
+const getOrders = async (userId: string) => {
+	try {
+		const orders = await sanityFetch({
+			query: MY_ORDERS_QUERY,
+			params: {
+				userId,
+			},
+		});
+		return orders?.data || null;
+	} catch (error) {
+		console.log("error", error);
+		return [];
+	}
+};
 
 export {
 	getCategories,
@@ -100,4 +129,6 @@ export {
 	getDealProducts,
 	getProductDetails,
 	getBrands,
+	getOrders,
+	getAllBlogs,
 };

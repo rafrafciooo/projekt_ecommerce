@@ -2301,6 +2301,13 @@
           }
         },
         "optional": true
+      },
+      "productCount": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
       }
     }
   },

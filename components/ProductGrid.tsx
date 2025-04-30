@@ -41,7 +41,7 @@ const ProductGrid = () => {
 		<div className="py-10">
 			<TabNav selectedTab={selectedTab} onTabSelect={setSelectedTab} />
 			{loading ? (
-				<div className='flex flex-col items-center justify-center py-10 min-h-80 gap-4 bg-gray-100 w-full mt-10'>
+				<div className=' flex flex-col items-center justify-center py-10 min-h-80 gap-4 bg-gray-100 w-full mt-10'>
 					<div className='flex items-center gap-2 text-shop-light-green'>
 						<Loader className='w-7 h-7 animate-spin' />
 						<p> Ładowanie...</p>

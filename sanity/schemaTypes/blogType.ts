@@ -45,7 +45,7 @@ export const blogType = defineType({
 			name: "isLatest",
 			title: "Najnowszy blog",
 			type: "boolean",
-			description: "Przełącz na Najnowszy włączony lub wyłączony",
+			description: "Zaznacz jeżeli ma sie wyswietlac na stronie glownej",
 			initialValue: true,
 		}),
 		defineField({

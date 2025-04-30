@@ -48,6 +48,14 @@ export const categoryType = defineType({
 				hotspot: true,
 			},
 		}),
+		// Dodanie pola 'productCount'
+		defineField({
+			name: "productCount",
+			title: "Liczba produktów",
+			type: "number",
+			description: "Ilość produktów w kategorii",
+			initialValue: 0, // Opcjonalnie możesz ustawić domyślną wartość
+		}),
 	],
 	preview: {
 		select: {

@@ -37,7 +37,7 @@ const ProductSideMenu = ({
 	};
 	return (
 		<div className={cn("absolute top-2 right-2 z-10 hoverEffect", className)}>
-			{/* Zmieniamy button na div */}
+		
 			<div
 				onClick={handleFavorite}
 				className={`p-1.5 rounded-full hover:bg-red-600 hover:text-white hoverEffect text-black ${

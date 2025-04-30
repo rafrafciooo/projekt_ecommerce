@@ -9,8 +9,8 @@ interface TabNavProps {
 
 const TabNav = ({ selectedTab, onTabSelect }: TabNavProps) => {
 	return (
-		<div className='flex justify-center md:justify-between items-center flex-wrap gap-3'>
-			<div className='flex items-center gap-2 text-sm'>
+		<div className='flex justify-center md:justify-between items-center flex-wrap gap-2'>
+			<div className='flex items-center gap-1 md:gap-3 text-sm'>
 				{productType.map((item, index) => (
 					<button
 						onClick={() => onTabSelect(item.value)}
