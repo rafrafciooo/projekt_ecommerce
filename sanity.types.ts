@@ -589,6 +589,81 @@ export type LATEST_BLOG_QUERYResult = Array<{
     _key: string;
   }>;
 }>;
+// Variable: SINGLE_BLOG_QUERY
+// Query: *[_type == "blog" && slug.current == $slug][0] {	...,	author->{	name,image	},	blogcategories[]->{	  title,	  "slug":slug.current}	}
+export type SINGLE_BLOG_QUERYResult = {
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  author: {
+    name: string | null;
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    } | null;
+  } | null;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blogcategories: Array<{
+    title: string | null;
+    slug: string | null;
+  }> | null;
+  publishedAt?: string;
+  isLatest?: boolean;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "normal";
+    listItem?: "bullet";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+} | null;
 // Variable: DEAL_PRODUCTS
 // Query: *[_type == "product" && status == 'hot'] | order(name asc){    ...,"categories":categories[]->title}
 export type DEAL_PRODUCTSResult = Array<{
@@ -763,6 +838,7 @@ declare module "@sanity/client" {
     "*[_type == \"brand\"] | order(name asc)": BRANDS_QUERYResult;
     "*[_type == \"blog\"] | order(publishedAt desc)[0..$quantity] {\n\t...,\n\tblogcategories[]->{\n\t  title,\n}\n\t}": GET_ALL_BLOGSResult;
     "*[_type == \"blog\" && isLatest == true] | order(name asc){\n    ...,\n    blogcategories[]->{\n      title,\n}\n    }": LATEST_BLOG_QUERYResult;
+    "*[_type == \"blog\" && slug.current == $slug][0] {\n\t...,\n\tauthor->{\n\tname,image\n\t},\n\tblogcategories[]->{\n\t  title,\n\t  \"slug\":slug.current\n}\n\t}": SINGLE_BLOG_QUERYResult;
     "*[_type == \"product\" && status == 'hot'] | order(name asc){\n    ...,\"categories\":categories[]->title}\n    \n    ": DEAL_PRODUCTSResult;
     "*[_type == \"product\" && slug.current == $slug] | order(name asc) [0]\n  ": PRODUCT_BY_SLUGResult;
     "\n\t*[_type == \"product\" && slug.current == $slug][0]{\n\t  \"brand\": brand->title\n\t}\n  ": BRAND_QUERYResult;

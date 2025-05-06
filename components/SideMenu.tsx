@@ -1,4 +1,5 @@
 "use client";
+
 import React, { FC } from "react";
 import Logo from "./Logo";
 import { X } from "lucide-react";
@@ -7,9 +8,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SocialMedia from "./SocialMedia";
 import { useOutsideClick } from "@/hooks";
-// import { ClerkLoaded, SignedIn, UserButton } from "@clerk/nextjs";
-// import SignIn from "./SignIn";
-// import { currentUser } from "@clerk/nextjs/server";
+import {
+	ClerkLoaded,
+	SignedIn,
+	SignedOut,
+	UserButton,
+	useUser,
+} from "@clerk/nextjs";
+import SignIn from "./SignIn";
+
 interface SideMenuProps {
 	isOpen: boolean;
 	onClose: () => void;
@@ -19,9 +26,10 @@ const SideMenu: FC<SideMenuProps> = ({ isOpen, onClose }) => {
 	const pathname = usePathname();
 	const sidebarRef = useOutsideClick<HTMLDivElement>(onClose);
 
+
 	return (
 		<div
-			className={`fixed inset-y-0 h-screen left-0 z-50 w-full  shadow-xl ${
+			className={`fixed inset-y-0 h-screen left-0 z-50 w-full shadow-xl ${
 				isOpen ? "translate-x-0" : "-translate-x-full"
 			} hoverEffect`}
 		>
@@ -31,10 +39,12 @@ const SideMenu: FC<SideMenuProps> = ({ isOpen, onClose }) => {
 			>
 				<div className='flex items-center justify-between gap-5'>
 					<Logo />
+
 					<button className='hover:text-shop-light-green'>
 						<X onClick={onClose} />
 					</button>
 				</div>
+
 				<div className='flex flex-col space-y-6 font-semibold tracking-wide'>
 					{NavBarItems.map(item => (
 						<Link
@@ -50,14 +60,22 @@ const SideMenu: FC<SideMenuProps> = ({ isOpen, onClose }) => {
 					))}
 				</div>
 
-				<div>
+				<ClerkLoaded>
+					{/* Tylko po załadowaniu Clereka */}
+					<div className='flex gap-4 items-center'>
+						<p>Moje konto: cos z ty mzrobic</p>
+						<SignedIn>
+							<UserButton />
+						</SignedIn>
+						<SignedOut>
+						<SignIn />
+						</SignedOut>
+					</div>
 					<SocialMedia />
-				</div>
+				</ClerkLoaded>
 			</div>
 		</div>
 	);
 };
-// <Logo className='text-white' spanClass='group-hover:text-white' />
-// logo.tsx  w span dodac CN i spanClass pod ciemny motyw
 
 export default SideMenu;

@@ -15,7 +15,7 @@ const LatestPostBlog = async () => {
 		<div className='mb-10 md:mb-20'>
 			<Title className='mb-5'>
 				Ostatnie posty
-				{/* <span className='absolute left-0 -bottom-1 bg-lightColor/20 inline-block w-10 h-[1px] group-hover:bg-shop-dark-green hoverEffect' /> MOZE COSD TAKIEGO?*/}
+				{/*podkreslenie ? <span className='absolute left-0 -bottom-1 bg-lightColor/20 inline-block w-10 h-[1px] group-hover:bg-shop-dark-green hoverEffect' />  */}
 			</Title>
 			{!blogs || blogs.length === 0 ? (
 				<div className='flex flex-row items-center justify-center space-x-2'>
@@ -25,7 +25,7 @@ const LatestPostBlog = async () => {
 			) : (
 				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 mt-5'>
 					{blogs?.map(blog => (
-						<div key={blog?._id} className='overflow-hidden rounded-lg'>
+						<div key={blog?._id} className='overflow-hidden rounded-md group'>
 							{blog?.mainImage && (
 								<Link href={`/blog/${blog?.slug?.current}`}>
 									<Image
@@ -33,11 +33,11 @@ const LatestPostBlog = async () => {
 										alt={blog?.title || "Obrazek z bloga"}
 										width={500}
 										height={500}
-										className='w-full max-h-40 object-cover'
+										className='w-full max-h-70 object-cover'
 									/>
 								</Link>
 							)}
-							<div className='bg-shop-light-bg p-5 overflow-hidden rounded-lg'>
+							<div className='bg-shop-light-bg p-5 overflow-hidden rounded-b-md'>
 								<div className='text-xs flex items-center gap-5 '>
 									<div className='flex items-center relative group cursor-pointer'>
 										{blog?.blogcategories?.map((item, index) => (

@@ -42,11 +42,11 @@ const OrderDetails = ({ order, isOpen, onClose }: OrderDetailsProps) => {
 						<strong>Email:</strong> {order.email}
 					</p>
 					<p>
-						<strong>Data:</strong>{" "}
+						<strong>Data:</strong>
 						{order.orderDate && new Date(order.orderDate).toLocaleDateString()}
 					</p>
 					<p>
-						<strong>Status:</strong>{" "}
+						<strong>Status:</strong>
 						<span className='capitalize text-green-600 font-medium'>
 							{order.status === "paid" && "Zapłacono"}
 						</span>

@@ -18,6 +18,45 @@ const LATEST_BLOG_QUERY =
 }
     }`);
 
+const SINGLE_BLOG_QUERY =
+	defineQuery(`*[_type == "blog" && slug.current == $slug][0] {
+	...,
+	author->{
+	name,image
+	},
+	blogcategories[]->{
+	  title,
+	  "slug":slug.current
+}
+	}`);
+const BLOG_CATEGORIES = defineQuery(
+	`*[_type == "blog"]{
+		   blogcategories[]->{
+		  ...
+		  }
+		}`
+);
+
+const OTHERS_BLOG_QUERY = defineQuery(`*[
+		_type == "blog"
+		&& defined(slug.current)
+		&& slug.current != $slug
+	  ]|order(publishedAt desc)[0...$quantity]{
+	  ...
+		publishedAt,
+		title,
+		mainImage,
+		slug,
+		author->{
+		  name,
+		  image,
+		},
+		categories[]->{
+		  title,
+		  "slug": slug.current,
+		}
+	  }`);
+
 const DEAL_PRODUCTS =
 	defineQuery(`*[_type == "product" && status == 'hot'] | order(name asc){
     ...,"categories":categories[]->title}
@@ -48,4 +87,7 @@ export {
 	BRAND_QUERY,
 	MY_ORDERS_QUERY,
 	GET_ALL_BLOGS,
+	SINGLE_BLOG_QUERY,
+	BLOG_CATEGORIES,
+	OTHERS_BLOG_QUERY,
 };

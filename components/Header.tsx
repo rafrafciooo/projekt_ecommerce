@@ -2,7 +2,7 @@ import React from "react";
 import Container from "./Container";
 import Logo from "./Logo";
 import Navbar from "./Navbar";
-import SearchBar from "./SearchBar";
+
 import CartIcon from "./CartIcon";
 
 import SignIn from "./SignIn";
@@ -15,6 +15,7 @@ import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 import { LogsIcon } from "lucide-react";
 import { getOrders } from "@/sanity/queries";
+import SearchBar from "./SearchBar";
 
 const Header = async () => {
 	const user = await currentUser();
@@ -37,21 +38,24 @@ const Header = async () => {
 					<CartIcon />
 					<FavoriteButton />
 
-					<ClerkLoaded>
-						<SignedIn>
-							<Link
-								href='/zamowienia'
-								className='relative group hover:text-shop-dark-green hoverEffect'
-							>
-								<LogsIcon />
-								<span className='absolute -top-1 -right-1 bg-shop-dark-green text-white rounded-full h-3.5 w-3.5 text-xs font-semibold flex items-center justify-center'>
-									{orders?.length ? orders?.length : 0}
-								</span>
-							</Link>
-							<UserButton />
-						</SignedIn>
-						{!user && <SignIn />}
-					</ClerkLoaded>
+					<div className='hidden md:inline-flex gap-5 items-center'>
+						<Link
+							href='/zamowienia'
+							className='relative group hover:text-shop-dark-green hoverEffect'
+						>
+							<LogsIcon />
+							<span className='absolute -top-1 -right-1 bg-shop-dark-green text-white rounded-full h-3.5 w-3.5 text-xs font-semibold flex items-center justify-center'>
+								{orders?.length ? orders?.length : 0}
+							</span>
+						</Link>
+
+						<ClerkLoaded>
+							<SignedIn>
+								<UserButton />
+							</SignedIn>
+							{!user && <SignIn />}
+						</ClerkLoaded>
+					</div>
 				</div>
 			</Container>
 		</header>
