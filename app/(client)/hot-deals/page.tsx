@@ -18,6 +18,7 @@ const DealsPage = async () => {
 				</Title>
 				<div className='grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5'>
 					{dealProducts?.map((product: Product) => (
+					
 						<ProductCard key={product._id} product={product} />
 					))}
 				</div>

@@ -12,12 +12,13 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle } from "lucide-react";
 import { useUser } from "@clerk/nextjs";
 import { useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import useStore from "@/store";
+import Loader from "@/components/Loader";
 
-const SuccessPage = () => {
+const SuccessPageContent = () => {
 	const { user } = useUser();
 	const { resetCart } = useStore();
 	const searchParams = useSearchParams();
@@ -86,6 +87,13 @@ const SuccessPage = () => {
 				</Card>
 			</motion.div>
 		</Container>
+	);
+};
+const SuccessPage = () => {
+	return (
+		<Suspense fallback={<Loader />}>
+			<SuccessPageContent />
+		</Suspense>
 	);
 };
 
